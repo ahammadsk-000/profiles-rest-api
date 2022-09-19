@@ -8,7 +8,7 @@ from django.contrib.auth.models import BaseUserManager
 class UserProfileManager(BaseUserManager):
     """ Manager for user profiles """
 
-    def ceate_user(self,email,name,password=None):
+    def create_user(self,email,name,password=None):
         """Create a new user profile"""
         if not email:
             raise ValueError("User must have an email address!!!")
@@ -27,7 +27,7 @@ class UserProfileManager(BaseUserManager):
 
         user.is_superuser = True
         user.is_staff = True
-        user.save(using= self._db)
+        user.save(using = self._db)
 
         return user
 
@@ -51,7 +51,7 @@ class UserProfile(AbstractBaseUser,PermissionsMixin):
 
     def get_short_name(self):
         """ Retrive short name of user"""
-        return self.Name
+        return self.name
     def __str__(self):
         """Return string representation of our user """
         return self.email
